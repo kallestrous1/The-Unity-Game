@@ -21,7 +21,7 @@ MonoBehaviour:
   baseAnimations: {fileID: 0}
   inGameSprite: {fileID: 0}
   itemStory: {fileID: 0}
-  description: Common courier charm
+  description: 'Common courier charm. Press e/LShift to dash. '
   type: 3
   price: 2
   data:

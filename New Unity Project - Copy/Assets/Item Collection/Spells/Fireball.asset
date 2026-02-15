@@ -21,7 +21,7 @@ MonoBehaviour:
   baseAnimations: {fileID: 9100000, guid: 001bf31f34376784fa9b5c8db0dce452, type: 2}
   inGameSprite: {fileID: 0}
   itemStory: {fileID: 0}
-  description: 
+  description: Hold right-mouse for fire
   type: 2
   price: 0
   data:

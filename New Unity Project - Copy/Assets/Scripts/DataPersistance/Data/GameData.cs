@@ -13,6 +13,8 @@ public class GameData
 
     public bool saveFileExists = false;
     public bool hasSeenIntro = false; 
+    public bool askedDataSetting = false;
+    public bool allowDataCollection = false;
 
     public int totalJumps;
     public  Vector2 playerSaveLocation;

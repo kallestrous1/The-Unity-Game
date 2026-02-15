@@ -880,6 +880,7 @@ GameObject:
   - component: {fileID: -6305479014406111521}
   - component: {fileID: 8927405593207764433}
   - component: {fileID: 8857305377544588257}
+  - component: {fileID: 4172792140433493593}
   m_Layer: 9
   m_Name: niceguySpriteSheet
   m_TagString: Player
@@ -915,7 +916,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 403685491848748714}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -995,7 +996,7 @@ Animator:
   m_GameObject: {fileID: 403685491848748714}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4bc5a1feb19314c47995bcdff19bb37b, type: 2}
+  m_Controller: {fileID: 22100000, guid: ecd4fc643219ef04f9b8208e83310f5a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1028,14 +1029,16 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  JUMPCOUNT: 5
+  JUMPCOUNT: 0
   jumpCount: 2
   coyoteTime: 0.2
   coyoteTimer: 0
   jumpBufferTime: 0
   dashTime: 0.2
+  dashAttackTime: 0.4
   dashPower: 300
-  DASHCOUNT: 5
+  dashAttackSpeed: 900
+  DASHCOUNT: 0
   recoilMagnitude: 500
   dashSound: {fileID: 8300000, guid: fae81b01a743dc242894618e36ccfe84, type: 3}
   doubleJumpEffect: {fileID: 5552915612537782573, guid: 05c2d778d1c9592498349939cbed0570, type: 3}
@@ -1119,8 +1122,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00de0be1c0a18e24e8c91b6277360939, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
+  startingHealth: 15
+  maxHealth: 10
   invincibilityDuration: 1
+  regenRate: 0
+  regenDelay: 3
+  health: 0
   healthSlider: {fileID: 0}
   maxHealthSlider: {fileID: 0}
   maxHealthRectTransform: {fileID: 0}
@@ -1311,6 +1318,7 @@ MonoBehaviour:
   footStepOne: {fileID: 8300000, guid: 9189a12c7dbc360419b72fcf19d6c63e, type: 3}
   footStepTwo: {fileID: 8300000, guid: 277b67862280bfe48ac981ba1a2d2de1, type: 3}
   pickUpItemSound: {fileID: 8300000, guid: 15525d2269013c64e91377a33f0ccdd5, type: 3}
+  chargeAttackSound: {fileID: 8300000, guid: 3fc635f8fc732394cbb1c20e8ef67038, type: 3}
 --- !u!114 &8857305377544588257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1324,6 +1332,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerRespawnManager
   playerHealth: {fileID: 5288524570132474603}
+--- !u!114 &4172792140433493593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403685491848748714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1501e72c39ebc3248bb13b27dfd47356, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AfterImageInstantiator
+  targetRoot: {fileID: 403685491848748719}
+  captureLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  afterImagePrefab: {fileID: 8141877228887037298, guid: d86cc374842715b44a5d8f04bd8d564f, type: 3}
+  spawnInterval: 0.04
+  defaultDuration: 1
+  defaultLifetime: 0.5
+  baseResolution: 512
+  paddingWorld: 0.1
+  startAlpha: 0.6
 --- !u!1 &403685491891853108
 GameObject:
   m_ObjectHideFlags: 0
@@ -1951,6 +1982,10 @@ PrefabInstance:
       value: Weapon Container
       objectReference: {fileID: 0}
     - target: {fileID: 35853237938210180, guid: 5fa28892abdade54abb389edcd259d8d, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 35853237938210180, guid: 5fa28892abdade54abb389edcd259d8d, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -2013,14 +2048,14 @@ PrefabInstance:
     - target: {fileID: 4677376790117541318, guid: 5fa28892abdade54abb389edcd259d8d, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 21300000, guid: 35980b9b193a2e94ea61e6cc8c8c0d5f, type: 3}
     - target: {fileID: 4677376790117541318, guid: 5fa28892abdade54abb389edcd259d8d, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4677376790117541318, guid: 5fa28892abdade54abb389edcd259d8d, type: 3}
       propertyPath: m_WasSpriteAssigned
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4856003477355152028, guid: 5fa28892abdade54abb389edcd259d8d, type: 3}
       propertyPath: activeWeapon

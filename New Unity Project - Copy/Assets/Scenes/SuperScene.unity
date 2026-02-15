@@ -359,7 +359,10 @@ MonoBehaviour:
     playerId: cbcdb62f-df0a-44e0-891a-2fdce0144b71
     runId: DEV_PLAYER_EDITOR
     sessionStarted: 0
+    saveFileExists: 1
     hasSeenIntro: 0
+    askedDataSetting: 0
+    allowDataCollection: 0
     totalJumps: 0
     playerSaveLocation: {x: 2, y: -59}
     playerSpawnScene: Grandpa's Farm

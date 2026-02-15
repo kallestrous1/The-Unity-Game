@@ -10,6 +10,7 @@ public class IntroVideoPlayer : MonoBehaviour
     {
         DataPersistenceManager.instance.gameData.hasSeenIntro = false;
         DataPersistenceManager.instance.gameData.saveFileExists = false;
+        DataPersistenceManager.instance.gameData.askedDataSetting = false;
         DataPersistenceManager.instance.SaveGame();
     }
 

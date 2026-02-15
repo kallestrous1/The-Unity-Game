@@ -101,6 +101,12 @@ public class KnockBack : MonoBehaviour
         isBeingKnockedBack = false;       
     }
 
+    public void StartPlayerInvincibility()
+    {
+        isInvincible = true;
+        Physics2D.IgnoreLayerCollision(9, 10, true);
+    }
+
     public void StopPlayerInvincibility()
     {
         isInvincible = false;

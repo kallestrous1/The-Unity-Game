@@ -49,7 +49,7 @@ public abstract class WeaponObject : ItemObject
         player.GetComponent<Animator>().runtimeAnimatorController = baseAnimations;
         PlayerWeaponContainer = GameObject.FindGameObjectWithTag("Weapon Container");
         PlayerWeaponContainer.GetComponentInChildren<SpriteRenderer>().sprite = null;
-        PlayerWeaponContainer.GetComponentInChildren<PlayerWeapon>().activeWeapon = null;
+        PlayerWeaponContainer.GetComponentInChildren<PlayerWeapon>().activeWeapon = PlayerWeaponContainer.GetComponentInChildren<PlayerWeapon>().defaultWeapon;
     }
 
     public virtual void CastBaseWeaponSpell() { }

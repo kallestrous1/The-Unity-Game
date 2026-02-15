@@ -10,6 +10,13 @@ public class PlayerSound : MonoBehaviour
 
     public AudioClip pickUpItemSound;
 
+    public AudioClip chargeAttackSound;
+
+    public void PlayChargeAttackSound()
+    {
+        AudioManager.Instance.Play(chargeAttackSound);
+    }
+
     public void PlayPickUpItem()
     {
         AudioManager.Instance.Play(pickUpItemSound);

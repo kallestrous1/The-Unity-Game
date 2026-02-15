@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f549d25e2a06b5846985e1218d4f0a11, type: 3}
+  m_Name: RegenCharmOne
+  m_EditorClassIdentifier: Assembly-CSharp::RegenCharmOne
+  itemID: 5fa5b45c-bf8a-410d-914d-b5ff45254c84
+  setActive: 1
+  spawnScene: 
+  uiDisplay: {fileID: 1410863629566759005, guid: 2f1fcc4f123ebda42a38b22a7e66eee2, type: 3}
+  characterDisplay: {fileID: 0}
+  animations: {fileID: 0}
+  baseAnimations: {fileID: 0}
+  inGameSprite: {fileID: 0}
+  itemStory: {fileID: 0}
+  description: A castle stone. A fraction of the kings power..
+  type: 3
+  price: 0
+  data:
+    itemID: 
+    name: 

@@ -389,8 +389,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1146273158053990071}
-  - component: {fileID: 4741853125918293373}
   - component: {fileID: 1863113424815412442}
+  - component: {fileID: 8464682800159813344}
   m_Layer: 0
   m_Name: AlertArea
   m_TagString: Untagged
@@ -413,20 +413,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2356715521076886066}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4741853125918293373
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6462130711620042487}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b5793c7d211b2641a202ab29170899c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerDetected: 0
-  Player: {fileID: 0}
 --- !u!61 &1863113424815412442
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -473,6 +459,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &8464682800159813344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6462130711620042487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c19623b5a4f21574695e90d704e7d44f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AlertAreaScript
+  playerDetected: 0
+  Player: {fileID: 0}
 --- !u!1 &7886095937731835197
 GameObject:
   m_ObjectHideFlags: 0
@@ -884,7 +884,7 @@ MonoBehaviour:
           m_Value0: 17675514049214968296
           m_Value1: 13967189040221263613
         Name: Alert Area Script
-        m_Value: {fileID: 4741853125918293373}
+        m_Value: {fileID: 8464682800159813344}
 --- !u!114 &8172736551526597084
 MonoBehaviour:
   m_ObjectHideFlags: 0

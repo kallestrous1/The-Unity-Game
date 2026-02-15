@@ -21,7 +21,8 @@ MonoBehaviour:
   baseAnimations: {fileID: 0}
   inGameSprite: {fileID: 0}
   itemStory: {fileID: 0}
-  description: Her world born anew she cast it all aside for him
+  description: Her world born anew she cast it all aside for him. Press space to
+    double jump.
   type: 3
   price: 0
   data:

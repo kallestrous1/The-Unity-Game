@@ -11,6 +11,9 @@ public class TelemetryManager : MonoBehaviour
 {
     public static TelemetryManager instance;
 
+    private string telemetryEndpoint = "https://mitya-telemetry.duckdns.org/events";
+    private string APIKey = "kort_onder_de_douche";
+
     List<TelemetryEvent> eventQueue = new List<TelemetryEvent>();
 
     void Awake()
@@ -84,6 +87,12 @@ public class TelemetryManager : MonoBehaviour
             // Wait before flushing
             yield return new WaitForSeconds(5f);
 
+            if(DataPersistenceManager.instance.gameData.allowDataCollection == false)
+            {
+                Debug.Log("Data collection disabled, skipping telemetry flush.");
+                continue;
+            }             
+
             // Nothing to send
             if (eventQueue.Count == 0)
                 continue;
@@ -97,15 +106,19 @@ public class TelemetryManager : MonoBehaviour
             Debug.Log(json);
 
             UnityWebRequest req = new UnityWebRequest(
-                "http://localhost:3000/events",
+                telemetryEndpoint,
                 "POST"
             );
 
             req.uploadHandler = new UploadHandlerRaw(body);
             req.downloadHandler = new DownloadHandlerBuffer();
             req.SetRequestHeader("Content-Type", "application/json");
+            req.SetRequestHeader("X-API-Key", APIKey);
 
             yield return req.SendWebRequest();
+            Debug.Log("POST done. result=" + req.result + " code=" + req.responseCode);
+            Debug.Log("Response body=" + req.downloadHandler.text);
+            Debug.Log("Server Fingerprint: " + req.GetResponseHeader("X-Telemetry-Server"));
 
             // If it failed, put events back in the queue
             if (req.result != UnityWebRequest.Result.Success)
@@ -145,13 +158,14 @@ public class TelemetryManager : MonoBehaviour
         Debug.Log(json);
 
         UnityWebRequest req = new UnityWebRequest(
-            "http://localhost:3000/events",
+            telemetryEndpoint,
             "POST"
         );
 
         req.uploadHandler = new UploadHandlerRaw(body);
         req.downloadHandler = new DownloadHandlerBuffer();
         req.SetRequestHeader("Content-Type", "application/json");
+        req.SetRequestHeader("X-API-Key", APIKey);
 
         yield return req.SendWebRequest();
 
@@ -162,6 +176,7 @@ public class TelemetryManager : MonoBehaviour
             Debug.LogError("Result: " + req.result);
             Debug.LogError("Error: " + req.error);
             Debug.LogError("Response Code: " + req.responseCode);
+            Debug.LogError("Response Body: " + req.downloadHandler.text);
 
             eventQueue.InsertRange(0, batch);
         }
@@ -178,7 +193,7 @@ public class TelemetryManager : MonoBehaviour
         byte[] body = System.Text.Encoding.UTF8.GetBytes(json);
 
         UnityWebRequest req = new UnityWebRequest(
-            "http://localhost:3000/events",
+            telemetryEndpoint,
             "POST"
         );
 
@@ -224,3 +239,4 @@ public class TelemetryEventBatch
         this.events = events;
     }
 }
+

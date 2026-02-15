@@ -9,6 +9,7 @@ public class PlayerInRangeDetector : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            Debug.Log("Player exited range of" + this.gameObject.name);
             Player = other.gameObject;
             playerInRange = false;
         }
@@ -18,6 +19,7 @@ public class PlayerInRangeDetector : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            Debug.Log("Player entered range of" + this.gameObject.name);
             Player = other.gameObject;
             playerInRange = true;
         }

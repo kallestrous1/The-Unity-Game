@@ -18,7 +18,7 @@ MonoBehaviour:
   uiDisplay: {fileID: -2316806603652852933, guid: 3349d73052f178e4d8e0d6cac4547550, type: 3}
   characterDisplay: {fileID: 0}
   animations: {fileID: 22100000, guid: 783660dd938d00e4fa31fec07e98a6c3, type: 2}
-  baseAnimations: {fileID: 9100000, guid: d4bae300959137441979cf8fc674baf6, type: 2}
+  baseAnimations: {fileID: 9100000, guid: 4bc5a1feb19314c47995bcdff19bb37b, type: 2}
   inGameSprite: {fileID: 7928438493215449093, guid: 357ab927cac61c649a3f3290c9847f05, type: 3}
   itemStory: {fileID: 0}
   description: Fancy
@@ -38,3 +38,5 @@ MonoBehaviour:
   baseSpellParticle: {fileID: 0}
   weaponForce: 80
   baseSpellMagicCost: 0
+  lightAttackCommitTime: 0.4
+  heavyAttackCommitTime: 0.8

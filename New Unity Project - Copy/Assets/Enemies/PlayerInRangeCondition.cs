@@ -11,12 +11,9 @@ public partial class PlayerInRangeCondition : Condition
 
     public override bool IsTrue()
     {
-        if (Detector.Value.playerInRange)
-        {
-            Player.Value = Detector.Value.Player;
-            return true;
-        }
-        return false;
+        Debug.Log(Detector);
+        Debug.Log(Detector.Value);
+        return Detector.Value.playerInRange;
     }
 
 }

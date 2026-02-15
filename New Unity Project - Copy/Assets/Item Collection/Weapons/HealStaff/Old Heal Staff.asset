@@ -18,7 +18,7 @@ MonoBehaviour:
   uiDisplay: {fileID: 4272171828115443790, guid: 9f478d423fc402246906381248fe4cf2, type: 3}
   characterDisplay: {fileID: 0}
   animations: {fileID: 22100000, guid: ecd4fc643219ef04f9b8208e83310f5a, type: 2}
-  baseAnimations: {fileID: 9100000, guid: d4bae300959137441979cf8fc674baf6, type: 2}
+  baseAnimations: {fileID: 9100000, guid: 4bc5a1feb19314c47995bcdff19bb37b, type: 2}
   inGameSprite: {fileID: -3114624029342804824, guid: 020a8a45c667aa744a70ff2101bbb029, type: 3}
   itemStory: {fileID: 0}
   description: 
@@ -38,3 +38,5 @@ MonoBehaviour:
   baseSpellParticle: {fileID: 488123722085168504, guid: 9de3c27800f763a4180c5bf206ab6a06, type: 3}
   weaponForce: 10
   baseSpellMagicCost: 3
+  lightAttackCommitTime: 0.4
+  heavyAttackCommitTime: 0.8

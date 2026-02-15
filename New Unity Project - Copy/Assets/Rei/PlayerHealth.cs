@@ -5,9 +5,16 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 {
+
+
     [Header("Health Settings")]
+    [SerializeField] private int startingHealth = 15;
     [SerializeField] public int maxHealth = 20;
     [SerializeField] private float invincibilityDuration = 1f;
+    [SerializeField] public int regenRate = 0; // health per second
+    [SerializeField] private float regenDelay = 3f;
+    [SerializeField] private int health;
+
 
     [Header("UI")]
     [SerializeField] private Slider healthSlider;
@@ -23,7 +30,6 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private AudioClip playerDamageSound;
     [SerializeField] private AudioClip playerDeathSound;
 
-    private int health;
     private float invincibilityTimer;
     private bool died = false;
     private bool recovering = false;
@@ -42,7 +48,7 @@ public class PlayerHealth : MonoBehaviour
         knockback = GetComponent<KnockBack>();
         if (maxHealthRectTransform != null)
             maxHealthSliderInitialSize = maxHealthRectTransform.sizeDelta;
-
+        StartCoroutine(RegenerateHealth());
         UpdateUI();
         /* health = maxHealth;
          knockback = this.gameObject.GetComponent<KnockBack>();
@@ -61,6 +67,20 @@ public class PlayerHealth : MonoBehaviour
         else
         {
             recovering = false;
+        }
+    }
+
+    private IEnumerator RegenerateHealth()
+    {
+        while (true) {
+            yield return new WaitForSeconds(regenDelay);
+            if (regenRate != 0)
+            {
+                if (health < maxHealth)
+                {
+                    changeHealth(regenRate);
+                }
+            }
         }
     }
 
@@ -164,7 +184,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (maxHealthRectTransform == null) return;
 
-        float scaleFactor = (float)maxHealth / 20f; // 20 = base health
+        float scaleFactor = (float)maxHealth / startingHealth; 
         Vector2 newSize = new Vector2(
             maxHealthSliderInitialSize.x * scaleFactor,
             maxHealthSliderInitialSize.y

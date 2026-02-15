@@ -70,6 +70,7 @@ public static class EntityIDRegistry
 
         if (list.Count > 1)
         {
+            Debug.LogWarning($"ENTITY ID '{id}' is used by multiple objects:" + obj.name, obj);
             Debug.LogError($"Duplicate ENTITY ID detected: {id}", obj);
         }
     }

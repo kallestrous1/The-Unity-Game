@@ -34,9 +34,11 @@ public class PlayerController : DataPersistenceBehaviour
 
     float rotationX;
     public float dashTime;
+    public float dashAttackTime;
     bool isDashing;
     bool dashRequest;
     public float dashPower;
+    public float dashAttackSpeed;
     public float DASHCOUNT;
     float dashCount;
 
@@ -55,6 +57,7 @@ public class PlayerController : DataPersistenceBehaviour
     private KnockBack knockback;
 
     private bool checkBoost;
+    private bool isFrozen;
 
 
 
@@ -123,6 +126,10 @@ public class PlayerController : DataPersistenceBehaviour
 
         if (knockback.isBeingKnockedBack) return;
 
+        if(!playerAttacks.isAttacking && isFrozen)
+        {
+            UnfreezeMidAir();
+        }
 
         CheckIfGrounded();
         xInput = InputManager.Instance.Move;
@@ -186,7 +193,7 @@ public class PlayerController : DataPersistenceBehaviour
         if (dashRequest)
         {
             dashRequest = false;
-            StartCoroutine(Dash());
+            StartCoroutine(Dash(dashPower, dashTime));
         }
     }
 
@@ -233,7 +240,16 @@ public class PlayerController : DataPersistenceBehaviour
     #endregion
 
     #region Dash
-    IEnumerator Dash()
+
+    //start player dash regardless of dashcount
+    public void StartPlayerDash()
+    {
+        dashCount++;
+        StartCoroutine(Dash(dashAttackSpeed, dashAttackTime));
+    }
+
+    //dash movement handler
+    IEnumerator Dash(float speed, float time)
     {
         if (dashCount > 0)
         {
@@ -241,18 +257,13 @@ public class PlayerController : DataPersistenceBehaviour
             playerSound.PlayDashSound();
             isDashing = true;
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0);
-            rb.AddForce(new Vector2(rotationX * dashPower, 0), ForceMode2D.Impulse);
+            rb.AddForce(new Vector2(rotationX * speed, 0), ForceMode2D.Impulse);
             float gravity = rb.gravityScale;
             rb.gravityScale = 0;
-            yield return new WaitForSeconds(dashTime);
+            yield return new WaitForSeconds(time);
             isDashing = false;
             rb.gravityScale = gravity;
         }
-    }
-    void Dashx()
-    {
-        rb.AddForce(new Vector2(rotationX * dashPower, 0), ForceMode2D.Impulse);
-
     }
     #endregion
 
@@ -298,11 +309,13 @@ public class PlayerController : DataPersistenceBehaviour
 
     public void FreezeMidAir()
     {
+        isFrozen = true;
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
     }
 
     public void UnfreezeMidAir()
     {
+        isFrozen = false;
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 

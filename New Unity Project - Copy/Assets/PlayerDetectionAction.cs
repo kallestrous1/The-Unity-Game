@@ -14,8 +14,7 @@ public partial class PlayerDetectionAction : Condition
 
     public override bool IsTrue()
     {
-        //return Detector.Value.playerDetected;
-        return false;
+        return Detector.Value.playerDetected;
     }
 
  

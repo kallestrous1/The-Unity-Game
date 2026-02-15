@@ -73,7 +73,10 @@ public class PlayerAttacks : MonoBehaviour
     {
         isAttacking = true;
         playerWeapon = GameObject.FindGameObjectWithTag("PlayerWeapon").GetComponent<PlayerWeapon>();
-
+        if(!playerWeapon.activeWeapon)
+        {
+            playerWeapon.activeWeapon = playerWeapon.defaultWeapon;
+        }
         HandleAttack(); // triggers animation 
 
         float commitTime = heavy ? playerWeapon.activeWeapon.heavyAttackCommitTime : playerWeapon.activeWeapon.lightAttackCommitTime;
@@ -88,13 +91,6 @@ public class PlayerAttacks : MonoBehaviour
         UpOrDownTilt = InputManager.Instance.UpOrDownTilt;
         if (heavy)
         {
-            if (playerWeapon.activeWeapon)
-            {
-                /* if (playerWeapon.activeWeapon.heavyAttackSound)
-                 {
-                     AudioManager.Instance.Play(playerWeapon.activeWeapon.heavyAttackSound);
-                 }*/
-            }
             ani.SetTrigger("HeavyAttack");
             return;
         }
@@ -118,4 +114,19 @@ public class PlayerAttacks : MonoBehaviour
             ani.SetTrigger("Attack");
         }
     }
+
+    public void CastEquippedWeaponSpell()
+    {
+        if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMagicJuice>().currentMagic >= playerWeapon.activeWeapon.baseSpellMagicCost)
+        {
+            if (playerWeapon.activeWeapon.baseSpellParticle)
+            {
+                Instantiate(playerWeapon.activeWeapon.baseSpellParticle, transform.position, Quaternion.identity);
+            }
+            playerWeapon.activeWeapon.CastBaseWeaponSpell();
+            gameObject.GetComponentInParent<PlayerMagicJuice>().changeMagic(-playerWeapon.activeWeapon.baseSpellMagicCost);
+        }
+    }
+
+
 }
