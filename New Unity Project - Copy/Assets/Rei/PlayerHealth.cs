@@ -21,6 +21,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private Slider maxHealthSlider;
     [SerializeField] private RectTransform maxHealthRectTransform;
     private Vector2 maxHealthSliderInitialSize;
+    private float initialWidth;
 
     [Header("Displays")]
     [SerializeField] private GameObject bloodDisplay;
@@ -47,7 +48,10 @@ public class PlayerHealth : MonoBehaviour
         health = maxHealth;
         knockback = GetComponent<KnockBack>();
         if (maxHealthRectTransform != null)
+        {
             maxHealthSliderInitialSize = maxHealthRectTransform.sizeDelta;
+            initialWidth = maxHealthRectTransform.rect.width;
+        }
         StartCoroutine(RegenerateHealth());
         UpdateUI();
         /* health = maxHealth;
@@ -184,12 +188,15 @@ public class PlayerHealth : MonoBehaviour
     {
         if (maxHealthRectTransform == null) return;
 
-        float scaleFactor = (float)maxHealth / startingHealth; 
-        Vector2 newSize = new Vector2(
-            maxHealthSliderInitialSize.x * scaleFactor,
-            maxHealthSliderInitialSize.y
-        );
+        float scaleFactor = (float)maxHealth / startingHealth;
+        /*   Vector2 newSize = new Vector2(
+               maxHealthSliderInitialSize.x * scaleFactor,
+               maxHealthSliderInitialSize.y
+           );
 
-        maxHealthRectTransform.sizeDelta = newSize;
+           maxHealthRectTransform.sizeDelta = newSize;*/
+        float newWidth = initialWidth * scaleFactor;
+
+        maxHealthRectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, newWidth);
     }
 }

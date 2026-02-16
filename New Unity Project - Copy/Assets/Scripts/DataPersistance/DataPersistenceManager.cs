@@ -82,8 +82,20 @@ public class DataPersistenceManager : MonoBehaviour
     {
         Debug.Log("Starting new game");
         isNewGame = true;
-        this.gameData = new GameData();
-        if(!gameData.sessionStarted)
+        if(gameData != null)
+        {
+            GameData oldData = gameData;
+            this.gameData = new GameData();
+            gameData.askedDataSetting = oldData.askedDataSetting;
+            gameData.allowDataCollection = oldData.allowDataCollection;
+            gameData.hasSeenIntro = oldData.hasSeenIntro;
+        }
+        else
+        {
+            this.gameData = new GameData();
+        }
+
+        if (!gameData.sessionStarted)
         {
             gameData.sessionStarted = true;
             TelemetrySession.StartSession();
@@ -95,6 +107,7 @@ public class DataPersistenceManager : MonoBehaviour
         }
         SaveGame();
         isNewGame = false;
+       
     }
 
     public void PrepareForSceneChange()

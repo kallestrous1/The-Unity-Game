@@ -7,7 +7,7 @@ AnimatorOverrideController:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Old Heal Staff
-  m_Controller: {fileID: 9100000, guid: d4bae300959137441979cf8fc674baf6, type: 2}
+  m_Controller: {fileID: 9100000, guid: 4bc5a1feb19314c47995bcdff19bb37b, type: 2}
   m_Clips:
-  - m_OriginalClip: {fileID: 7400000, guid: cd0734c082ef0de4b95d7773e952363c, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 9fb0578c9ed13cd458bff552060db3f3, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: f22599da81c1a3c4986feb2b0968c02d, type: 2}

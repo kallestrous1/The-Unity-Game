@@ -20,6 +20,9 @@ public class NewManager : DataPersistenceBehaviour
 
         manager = this;
         DontDestroyOnLoad(gameObject);
+
+        CachePlayerReference();
+        DataPersistenceManager.instance.LoadGame(true);
     }
     #endregion
 
@@ -42,12 +45,6 @@ public class NewManager : DataPersistenceBehaviour
     private GameObject player;
     private bool respawnHandled = false;
     #endregion
-
-    private void Start()
-    {
-        CachePlayerReference();
-        DataPersistenceManager.instance.LoadGame(true);
-    }
 
     public void BootStrapAfterDataLoaded()
     {

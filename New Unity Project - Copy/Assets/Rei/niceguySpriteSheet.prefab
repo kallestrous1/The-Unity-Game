@@ -1123,7 +1123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 15
-  maxHealth: 10
+  maxHealth: 15
   invincibilityDuration: 1
   regenRate: 0
   regenDelay: 3

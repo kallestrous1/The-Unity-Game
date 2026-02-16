@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4004288546309484726}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: bone_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3882132249199072575}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: bone_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5443106418856259940}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: bone_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7071773770666510431}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,7 +135,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4187548385262014008}
   - component: {fileID: 169960229034306131}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: bone_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -203,7 +203,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8780143083430618024}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: bone_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -237,7 +237,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8454293064627930147}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: bone_9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -268,7 +268,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3433566802689064431}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: bone_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -314,7 +314,7 @@ GameObject:
   - component: {fileID: 158281804378503653}
   - component: {fileID: 5314709970739716439}
   - component: {fileID: 8932183310985373193}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ant_0
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -357,6 +357,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -378,6 +380,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -431,6 +434,7 @@ MonoBehaviour:
   hitSoundEffect: {fileID: 8300000, guid: 2ae0ee7337955c14cb70938e5e90bd4a, type: 3}
   hitParticleEffect: {fileID: 3133542132048655781, guid: e05151e2294018a43989bc0789f77a1f, type: 3}
   deathParticleEffect: {fileID: 1652303154395731078, guid: 00cbd5ef58763a2468ddad603864e24c, type: 3}
+  ani: {fileID: 0}
 --- !u!114 &3238275496754396519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -445,6 +449,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   hitSound: {fileID: 8300000, guid: 464acc7809d4498438db8084783f8694, type: 3}
+  oneOff: 0
 --- !u!114 &6907808099138057486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -597,6 +602,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   inRange: 0
   flipped: 0
+  facingRight: 0
   TIMEBETWEENACTIONS: 3
   currentActionRecoveryTime: 0
 --- !u!1 &7835148275600211380
@@ -608,7 +614,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1489185822354979226}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: bone_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -639,7 +645,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 351207744534011768}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: bone_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}

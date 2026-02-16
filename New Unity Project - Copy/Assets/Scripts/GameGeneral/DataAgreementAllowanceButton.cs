@@ -11,6 +11,8 @@ public class DataAgreementAllowanceButton : BasicButton
     {
         base.OnClicked();
         DataPersistenceManager.instance.gameData.allowDataCollection = allowDataAgreement;
+        DataPersistenceManager.instance.gameData.askedDataSetting = true;
+        DataPersistenceManager.instance.SaveGame();
         Debug.Log("Data collection allowed: " + allowDataAgreement);
         settingsButtons.SetActive(true);
         dataAgreementPanel.SetActive(false);
